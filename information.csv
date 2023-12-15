@@ -1,0 +1,11 @@
+address       ,type,location,segment-type
+S301test.html,.html,1.html,301
+S302test.html,.html,2.html,302
+S1.html,.html,,200
+S2.html,.html,,200
+Sa.png,.png,,200
+Stest1.png,.png,a.png,301
+Stest2.png,.png,b.png,302
+Sa.txt,.txt,,200
+Sb.png,.png,,200
+Sc.csv,.csv,,200
