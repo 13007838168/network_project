@@ -52,20 +52,21 @@ public class Client {
                     segment.print_content();
                 }
             }
-            boolean conn;
-            while (true) {
-                System.out.println("是否要建立长连接？ Y/N");
-                String str = scanner.nextLine();
-                if (str.equals("Y")) {
-                    out.writeUTF("K");
-                    conn = true;
-                    break;
-                } else if (str.equals("N")) {
-                    out.writeUTF("C");
-                    conn = false;
-                    break;
-                } else System.out.println("请重新输入");
-            }
+            boolean conn=true;
+            if (suc)
+                while (true) {
+                    System.out.println("是否要建立长连接？ Y/N");
+                    String str = scanner.nextLine();
+                    if (str.equals("Y")) {
+                        out.writeUTF("K");
+                        conn = true;
+                        break;
+                    } else if (str.equals("N")) {
+                        out.writeUTF("C");
+                        conn = false;
+                        break;
+                    } else System.out.println("请重新输入");
+                }
             boolean reGet = false;
             String lastFile = "";
             while (suc) {
@@ -95,7 +96,7 @@ public class Client {
                     System.out.println("\u001B[31m服务器发生未知错误\u001B[0m");
                     client.close();
                     break;
-                } else {
+                } else if(command.equals("p")||command.equals("g")) {
                     if (!reGet) {
                         System.out.println("请输入文件名称");
                         file_name = scanner.nextLine();
@@ -143,6 +144,7 @@ public class Client {
                         }
                     }
                 }
+                else System.out.println("未知命令");
 
             }
         } catch (IOException e) {

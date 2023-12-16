@@ -60,8 +60,10 @@ public class Server {
                     segment.print_Request_segment(Segment.Post + command);
                 }
             }
-            String str = in.readUTF();
-            conn = str.equals("K") ? Segment.Keep : Segment.Close;
+            if (suc) {
+                String str = in.readUTF();
+                conn = str.equals("K") ? Segment.Keep : Segment.Close;
+            }
             while (suc) {
                 time++;
                 if (conn.equals(Segment.Close)) {
